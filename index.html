@@ -1,4 +1,4 @@
-إليك كود الموقع الكامل والجاهز للنسخ المباشر في ملف index.html، يحتوي على كافة الميزات (التصميم النيون، لوحة التحكم، المساعد الآلي، والمساحات الإعلانية):
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -22,8 +22,8 @@
             --secondary: #3a7bd5;
             --accent: #ff007f;
             --accent-glow: rgba(255, 0, 127, 0.6);
-            --bg-dark: #070b19;
-            --card-bg: rgba(15, 23, 42, 0.85);
+            --bg-dark: #050814;
+            --card-bg: rgba(15, 23, 42, 0.9);
             --text-main: #f1f5f9;
             --text-sub: #94a3b8;
             --bot-color: #00d2ff;
@@ -43,8 +43,8 @@
             color: var(--text-main);
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(0, 210, 255, 0.08) 0%, transparent 25%),
-                radial-gradient(circle at 85% 85%, rgba(255, 0, 127, 0.08) 0%, transparent 25%);
+                radial-gradient(circle at 10% 20%, rgba(0, 210, 255, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 127, 0.1) 0%, transparent 30%);
         }
 
         /* Top Announcement Bar */
@@ -52,12 +52,13 @@
             background: linear-gradient(90deg, var(--accent), var(--secondary));
             color: #ffffff;
             text-align: center;
-            padding: 8px 15px;
+            padding: 10px 15px;
             font-size: 14px;
             font-weight: bold;
             display: none;
             position: relative;
             z-index: 1001;
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
         .top-ad-bar a {
@@ -68,7 +69,7 @@
 
         /* Header & Navigation */
         header {
-            background: rgba(7, 11, 25, 0.95);
+            background: rgba(5, 8, 20, 0.95);
             backdrop-filter: blur(15px);
             padding: 15px 8%;
             display: flex;
@@ -83,7 +84,7 @@
         }
 
         .logo {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 900;
             background: linear-gradient(45deg, var(--primary), #ffffff);
             -webkit-background-clip: text;
@@ -142,18 +143,20 @@
             box-shadow: 0 0 15px var(--accent-glow);
         }
 
-        /* Hero Section */
+        /* Hero Section with Interactive 3D Phone */
         .hero {
-            min-height: 75vh;
+            min-height: 85vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 80px 20px 50px 20px;
+            justify-content: space-between;
+            padding: 50px 8%;
+            gap: 40px;
+            flex-wrap: wrap;
         }
 
         .hero-content {
-            max-width: 850px;
+            flex: 1;
+            min-width: 300px;
         }
 
         .badge {
@@ -170,7 +173,7 @@
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 900;
             margin-bottom: 20px;
             line-height: 1.2;
@@ -183,25 +186,24 @@
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 16px;
             color: var(--text-sub);
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             line-height: 1.8;
         }
 
         .hero-btns {
             display: flex;
-            justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 12px 28px;
+            padding: 12px 26px;
             border-radius: 12px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 15px;
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -220,6 +222,108 @@
             box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
         }
 
+        /* INTERACTIVE 3D PHONE CONTAINER */
+        .interactive-phone-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 280px;
+        }
+
+        .phone-mockup {
+            width: 280px;
+            height: 540px;
+            background: #0f172a;
+            border: 4px solid var(--primary);
+            border-radius: 36px;
+            box-shadow: 0 0 35px var(--primary-glow), inset 0 0 15px rgba(0, 210, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        .phone-mockup:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 0 50px var(--accent-glow), inset 0 0 20px rgba(255, 0, 127, 0.3);
+            border-color: var(--accent);
+        }
+
+        .phone-notch {
+            width: 120px;
+            height: 22px;
+            background: #050814;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 0 0 12px 12px;
+            z-index: 10;
+        }
+
+        .phone-screen-content {
+            padding: 45px 15px 20px 15px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(7, 11, 25, 0.98));
+        }
+
+        .phone-app-header {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .phone-interactive-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 15px;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .phone-interactive-card img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .phone-interactive-card h4 {
+            font-size: 14px;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .phone-interactive-card p {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        .touch-hint {
+            font-size: 11px;
+            color: var(--accent);
+            background: rgba(255, 0, 127, 0.1);
+            padding: 6px;
+            border-radius: 8px;
+            border: 1px dashed var(--accent);
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
         /* ADVERTISING SECTION */
         .ad-section {
             padding: 40px 8%;
@@ -229,7 +333,7 @@
         .ad-banner-container {
             background: var(--card-bg);
             border: 2px solid var(--accent);
-            box-shadow: 0 0 20px var(--accent-glow);
+            box-shadow: 0 0 25px var(--accent-glow);
             border-radius: 20px;
             overflow: hidden;
             max-width: 1000px;
@@ -288,7 +392,7 @@
         .card {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
-            padding: 30px 20px;
+            padding: 20px;
             border-radius: 20px;
             text-align: center;
             transition: all 0.4s ease;
@@ -302,6 +406,14 @@
             border-color: var(--primary);
             box-shadow: 0 0 25px var(--primary-glow);
             transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
         }
 
         .icon-box {
@@ -327,6 +439,18 @@
             color: var(--text-sub);
             font-size: 14px;
             line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .item-details {
+            background: rgba(0,0,0,0.4);
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 13px;
+            margin-top: 10px;
+            color: var(--primary);
+            font-weight: bold;
+            border: 1px solid rgba(0, 210, 255, 0.2);
         }
 
         /* Contact Box */
@@ -401,7 +525,7 @@
             border-radius: 16px;
             padding: 25px;
             width: 100%;
-            max-width: 600px;
+            max-width: 650px;
             max-height: 90vh;
             overflow-y: auto;
         }
@@ -433,6 +557,37 @@
             background: #1e293b;
             color: #ffffff;
             font-size: 14px;
+        }
+
+        .dynamic-item-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px dashed var(--primary);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .delete-item-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .add-more-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 15px;
         }
 
         .modal-actions {
@@ -478,6 +633,11 @@
             box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
             z-index: 999;
             text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .floating-wa:hover {
+            transform: scale(1.1);
         }
 
         /* CHATBOT STYLES */
@@ -592,7 +752,7 @@
         footer {
             text-align: center;
             padding: 25px;
-            background: #040711;
+            background: #03050c;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             color: var(--text-sub);
             font-size: 14px;
@@ -606,14 +766,20 @@
             }
 
             nav ul {
-                gap: 12px;
-                font-size: 13px;
+                gap: 10px;
+                font-size: 12px;
                 flex-wrap: wrap;
                 justify-content: center;
             }
 
-            .hero h1 {
-                font-size: 32px;
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+            .hero-btns {
+                justify-content: center;
             }
 
             .info-row {
@@ -647,22 +813,43 @@
             <ul>
                 <li><a href="#about">الرئيسية</a></li>
                 <li><a href="#services">الخدمات</a></li>
-                <li><a href="#accessories">الإكسسوارات</a></li>
+                <li><a href="#maintenance-gallery">معرض الصيانة</a></li>
+                <li><a href="#accessories">المنتجات</a></li>
                 <li><a href="#contact">التواصل</a></li>
                 <li><button class="admin-btn" onclick="openAdminModal()"><i class="fa-solid fa-gear"></i> إدارة الموقع</button></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Interactive 3D Phone -->
     <section class="hero" id="about">
-        <div class="hero-content" data-aos="fade-up">
+        <div class="hero-content" data-aos="fade-right">
             <span class="badge" id="display-badge">المركز الأول للصيانة والإكسسوارات</span>
             <h1>الاحترافية والدقة في <span id="display-hero-title">صيانة واكسسوارات الهواتف</span></h1>
-            <p id="display-hero-desc">نقدم أفضل حلول الصيانة السريعة للشاشات والبطاريات واللوحات الإلكترونية، بالإضافة إلى تشكيلة من أحدث الإكسسوارات العالمية والأصلية في بابل.</p>
+            <p id="display-hero-desc">نقدم أفضل حلول الصيانة السريعة للشاشات والبطاريات واللوحات الإلكترونية، بالإضافة إلى تشكيلة من أحدث الإكسسوارات العالمية والأصلية في بابل - القاسم.</p>
             <div class="hero-btns">
                 <a href="tel:07818213344" id="btn-call" class="btn btn-primary"><i class="fa-solid fa-phone"></i> اتصل بنا الآن</a>
                 <a href="https://wa.me/9647818213344" id="btn-wa" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> مراسلة الواتساب</a>
+            </div>
+        </div>
+
+        <!-- Interactive 3D Phone Mockup -->
+        <div class="interactive-phone-wrapper" data-aos="fade-left">
+            <div class="phone-mockup" id="interactivePhone" onclick="triggerPhoneTouch()">
+                <div class="phone-notch"></div>
+                <div class="phone-screen-content">
+                    <div>
+                        <div class="phone-app-header"><i class="fa-solid fa-bolt"></i> عماد ديگان لايف</div>
+                        <div class="phone-interactive-card">
+                            <img id="phoneCardImg" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80" alt="عرض هاتف">
+                            <h4 id="phoneCardTitle">أحدث إكسسوارات الهواتف</h4>
+                            <p id="phoneCardDesc">اضغط هنا أو المس الشاشة لتغيير العرض التفاعلي الفوري!</p>
+                        </div>
+                    </div>
+                    <div class="touch-hint">
+                        <i class="fa-solid fa-hand-pointer"></i> المس الهاتف للتفاعل الفوري
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -671,10 +858,10 @@
     <section class="ad-section" id="mainAdSection">
         <div class="ad-banner-container" data-aos="zoom-in">
             <div id="ad-media-box">
-                <!-- Image or Video will render here dynamically -->
+                <!-- Image or Video will render here -->
             </div>
             <div class="ad-banner-caption">
-                <h3 id="display-ad-title">إعلان/عروض عماد ديگان المميزة</h3>
+                <h3 id="display-ad-title">إعلان وعروض عماد ديگان المميزة</h3>
                 <p id="display-ad-desc">شاهد أحدث العروض الحصرية والوصول الجديد للإكسسوارات وأجهزة الصيانة الحديثة.</p>
                 <a href="#contact" id="display-ad-btn" class="btn btn-primary"><i class="fa-solid fa-star"></i> الاستفادة من العرض</a>
             </div>
@@ -688,12 +875,12 @@
             <div class="card" data-aos="fade-up" data-aos-delay="100">
                 <div class="icon-box"><i class="fa-solid fa-wrench"></i></div>
                 <h3>تبديل الشاشات والبطاريات</h3>
-                <p>تبديل الشاشات والبطاريات الأصلية مع الضمان لكافة هواتف آيفون وسامسونج وجميع الماركات.</p>
+                <p>تبديل الشاشات والبطاريات الأصلية مع الضمان لكافة هواتف آيفون وسامسونج وجميع الماركات العالمية.</p>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="200">
                 <div class="icon-box"><i class="fa-solid fa-microchip"></i></div>
                 <h3>صيانة المذربورد والآيسي</h3>
-                <p>إصلاح دقيق لأعطال الشحن، الصوت، الشبكة، والأعطال المستعصية على أيدي متخصصين.</p>
+                <p>إصلاح دقيق لأعطال الشحن، الصوت، الشبكة، والأعطال المستعصية بأحدث معدات اللحام والفحص.</p>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="300">
                 <div class="icon-box"><i class="fa-solid fa-laptop-code"></i></div>
@@ -703,25 +890,19 @@
         </div>
     </section>
 
-    <!-- Accessories Section -->
+    <!-- MAINTENANCE WORK GALLERY SECTION (شغل أيدينا للزوار) -->
+    <section class="section" id="maintenance-gallery" style="background: rgba(0,0,0,0.25);">
+        <h2 class="section-title" data-aos="fade-up">معرض <span>شغل أيدينا في الصيانة</span></h2>
+        <div class="grid" id="maintenanceGalleryGrid">
+            <!-- Dynamic Maintenance Works -->
+        </div>
+    </section>
+
+    <!-- Accessories & Products Section (قسم المنتجات) -->
     <section class="section" id="accessories">
-        <h2 class="section-title" data-aos="fade-up">قسم <span>الإكسسوارات الحديثة</span></h2>
-        <div class="grid">
-            <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <div class="icon-box"><i class="fa-solid fa-bolt"></i></div>
-                <h3>الشواحن والكوابل الأصلية</h3>
-                <p>شواحن سريعة وبور بانك وكوابل معتمدة لحماية بطارية هاتفك وضمان أقصى سرعة شحن.</p>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <div class="icon-box"><i class="fa-solid fa-headphones"></i></div>
-                <h3>السماعات والساعات الذكية</h3>
-                <p>أحدث سماعات البلوتوث والساعات الذكية المتوافقة مع كافة الأجهزة بتصميم عصري.</p>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="300">
-                <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
-                <h3>الحماية والكفرات</h3>
-                <p>كفرات فاخرة وحمايات شاشة ضد الصدمات والخدوش لجميع الموديلات الحديثة.</p>
-            </div>
+        <h2 class="section-title" data-aos="fade-up">قسم <span>المنتجات والإكسسوارات</span></h2>
+        <div class="grid" id="accessoriesGrid">
+            <!-- Dynamic Accessories Items -->
         </div>
     </section>
 
@@ -803,11 +984,11 @@
                     <input type="text" id="input-address">
                 </div>
                 <div class="form-group">
-                    <label>رقم الهاتف (مثل: 07818213344):</label>
+                    <label>رقم الهاتف:</label>
                     <input type="text" id="input-phone">
                 </div>
                 <div class="form-group">
-                    <label>رقم الواتساب (بالصيغة الدولية مثل: 9647818213344):</label>
+                    <label>رقم الواتساب الدولي:</label>
                     <input type="text" id="input-wa">
                 </div>
                 <div class="form-group">
@@ -816,8 +997,17 @@
                 </div>
 
                 <hr style="margin:20px 0; border-color:#334155;">
-                <h3 style="color:var(--accent); margin-bottom:15px; font-size:18px;">إدارة المساحات الإعلانية (Ads)</h3>
+                <h3 style="color:var(--primary); margin-bottom:15px; font-size:18px;">إدارة المنتجات والإكسسوارات (الاسم، السعر، العدد، الخزن، التفاصيل، والصورة)</h3>
+                <button type="button" class="add-more-btn" onclick="addAccessoryField()"><i class="fa-solid fa-plus"></i> إضافة منتج جديد</button>
+                <div id="accessoriesContainer"></div>
 
+                <hr style="margin:20px 0; border-color:#334155;">
+                <h3 style="color:var(--accent); margin-bottom:15px; font-size:18px;">معرض شغل أيدينا في الصيانة (نشر أعمال التصليح للزوار)</h3>
+                <button type="button" class="add-more-btn" onclick="addMaintenanceField()"><i class="fa-solid fa-plus"></i> إضافة صورة عمل صيانة جديد</button>
+                <div id="maintenanceContainer"></div>
+
+                <hr style="margin:20px 0; border-color:#334155;">
+                <h3 style="color:var(--primary); margin-bottom:15px; font-size:18px;">إدارة المساحات الإعلانية (Ads)</h3>
                 <div class="form-group">
                     <label>تفعيل الشريط الإعلاني العلوي:</label>
                     <select id="input-top-ad-enable">
@@ -829,27 +1019,26 @@
                     <label>نص الشريط العلوي:</label>
                     <input type="text" id="input-top-ad-text">
                 </div>
-
                 <div class="form-group">
-                    <label>تفعيل قسم الإعلان الرئيسي (صورة / فيديو):</label>
+                    <label>تفعيل الإعلان الرئيسي:</label>
                     <select id="input-main-ad-enable">
                         <option value="true">إظهار الإعلان الرئيسي</option>
                         <option value="false">إخفاء الإعلان الرئيسي</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>نوع الوسائط الإعلانية:</label>
+                    <label>نوع الوسائط:</label>
                     <select id="input-ad-type">
                         <option value="image">صورة (Image)</option>
-                        <option value="video">فيديو (Video File or Link)</option>
+                        <option value="video">فيديو (Video)</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>رابط الصورة أو الفيديو الإعلاني:</label>
-                    <input type="text" id="input-ad-media-url" placeholder="ضع رابط الصورة أو الفيديو هنا">
+                    <label>رابط الصورة أو الفيديو:</label>
+                    <input type="text" id="input-ad-media-url">
                 </div>
                 <div class="form-group">
-                    <label>عنوان الإعلان الرئيسي:</label>
+                    <label>عنوان الإعلان:</label>
                     <input type="text" id="input-ad-title">
                 </div>
                 <div class="form-group">
@@ -859,24 +1048,23 @@
 
                 <hr style="margin:20px 0; border-color:#334155;">
                 <h3 style="color:var(--primary); margin-bottom:15px; font-size:18px;">تخصيص المساعد الآلي (Chatbot)</h3>
-
                 <div class="form-group">
-                    <label>حالة المساعد الآلي:</label>
+                    <label>حالة المساعد:</label>
                     <select id="input-bot-enable">
                         <option value="true">تفعيل المساعد</option>
-                        <option value="false">إخفاء / تعطيل المساعد</option>
+                        <option value="false">إخفاء المساعد</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>اسم المساعد الآلي:</label>
+                    <label>اسم المساعد:</label>
                     <input type="text" id="input-bot-name">
                 </div>
                 <div class="form-group">
-                    <label>الرسالة الترحيبية للمساعد:</label>
+                    <label>الرسالة الترحيبية:</label>
                     <input type="text" id="input-bot-welcome">
                 </div>
                 <div class="form-group">
-                    <label>لون المساعد (الرئيسي):</label>
+                    <label>لون المساعد:</label>
                     <input type="color" id="input-bot-color" style="height:40px; cursor:pointer;">
                 </div>
                 <div class="form-group">
@@ -904,7 +1092,7 @@
             storeName: "مكتب عماد ديگان",
             badge: "المركز الأول للصيانة والإكسسوارات",
             heroTitle: "صيانة واكسسوارات الهواتف",
-            heroDesc: "نقدم أفضل حلول الصيانة السريعة للشاشات والبطاريات واللوحات الإلكترونية، بالإضافة إلى تشكيلة من أحدث الإكسسوارات العالمية والأصلية في بابل.",
+            heroDesc: "نقدم أفضل حلول الصيانة السريعة للشاشات والبطاريات واللوحات الإلكترونية، بالإضافة إلى تشكيلة من أحدث الإكسسوارات العالمية والأصلية في بابل - القاسم.",
             address: "بابل - القاسم - الشارع العام (مجاور مصرف الرافدين)",
             phone: "07818213344",
             waPhone: "9647818213344",
@@ -920,8 +1108,42 @@
             botName: "مساعد عماد ديگان",
             botWelcome: "مرحباً بك! أنا المساعد الآلي لمكتب عماد ديگان. كيف يمكنني مساعدتك في الصيانة أو الإكسسوارات اليوم؟",
             botColor: "#00d2ff",
-            botBg: "#0f172a"
+            botBg: "#0f172a",
+            accessories: [
+                { name: "شاحن سريع أصلي معتمد", price: "15,000 د.ع", qty: "10", location: "الرف العلوي - صندوق A", desc: "شاحن سريع معتمد لحماية بطارية الآيفون والسامسونج.", img: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=500&auto=format&fit=crop&q=80" },
+                { name: "سماعة بلوتوث لاسلكية برو", price: "25,000 د.ع", qty: "5", location: "الرف الثاني - خزانة الإكسسوارات", desc: "صوت نقي وبطارية تدوم طويلاً مع علبة شحن.", img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&auto=format&fit=crop&q=80" },
+                { name: "كفر حماية فاخر ضد الصدمات", price: "10,000 د.ع", qty: "20", location: "قسم الكفرات - رف 3", desc: "تصميم أنيق مقاوم للصدمات والخدوش لمختلف الموديلات.", img: "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=500&auto=format&fit=crop&q=80" }
+            ],
+            maintenanceWorks: [
+                { title: "تبديل شاشة آيفون أصلية مع ضمان", desc: "تم تبديل شاشة كسر كامل مع نقل ترو تون وضمان لمدة شهر كامل.", img: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=500&auto=format&fit=crop&q=80" },
+                { title: "إصلاح عطل الشحن ومذربورد سامسونج", desc: "معالجة فاصل شحن وتبديل آيسي الشحن بدقة واحترافية عالية.", img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80" }
+            ]
         };
+
+        // Interactive Phone Touch Feature
+        let touchIndex = 0;
+        function triggerPhoneTouch() {
+            let data;
+            try {
+                data = JSON.parse(localStorage.getItem("siteData")) || defaultData;
+            } catch (e) {
+                data = defaultData;
+            }
+            const items = data.accessories || defaultData.accessories;
+            if (items.length === 0) return;
+
+            touchIndex = (touchIndex + 1) % items.length;
+            const item = items[touchIndex];
+
+            const phoneCard = document.getElementById("interactivePhone");
+            phoneCard.style.transform = "scale(0.95)";
+            setTimeout(() => {
+                phoneCard.style.transform = "scale(1)";
+                document.getElementById("phoneCardImg").src = item.img || 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80';
+                document.getElementById("phoneCardTitle").innerText = item.name;
+                document.getElementById("phoneCardDesc").innerText = "السعر: " + item.price + " | متوفر: " + item.qty;
+            }, 200);
+        }
 
         function loadSiteData() {
             let data;
@@ -974,6 +1196,39 @@
                 }
             }
 
+            // Load Accessories Grid (قسم المنتجات مع التفاصيل الكاملة)
+            const accGrid = document.getElementById("accessoriesGrid");
+            accGrid.innerHTML = "";
+            const items = data.accessories || defaultData.accessories;
+            items.forEach(item => {
+                accGrid.innerHTML += `
+                    <div class="card" data-aos="fade-up">
+                        <img src="${item.img || 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80'}" alt="${item.name}">
+                        <h3>${item.name}</h3>
+                        <p>${item.desc}</p>
+                        <div class="item-details">
+                            <div>السعر: ${item.price}</div>
+                            <div>العدد المتوفر: ${item.qty}</div>
+                            <div>مكان الخزن: ${item.location}</div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Load Maintenance Gallery Grid (شغل أيدينا للزوار)
+            const maintGrid = document.getElementById("maintenanceGalleryGrid");
+            maintGrid.innerHTML = "";
+            const maintWorks = data.maintenanceWorks || defaultData.maintenanceWorks;
+            maintWorks.forEach(work => {
+                maintGrid.innerHTML += `
+                    <div class="card" data-aos="fade-up">
+                        <img src="${work.img || 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=500&auto=format&fit=crop&q=80'}" alt="${work.title}">
+                        <h3 style="color:var(--primary);">${work.title}</h3>
+                        <p>${work.desc}</p>
+                    </div>
+                `;
+            });
+
             // Chatbot customization load
             const botEnable = data.botEnable !== undefined ? data.botEnable : defaultData.botEnable;
             document.getElementById("botToggle").style.display = botEnable === "true" ? "flex" : "none";
@@ -1003,9 +1258,11 @@
                 document.getElementById("input-wa").value = data.waPhone || "";
                 document.getElementById("input-map-link").value = data.mapLink || "";
 
+                renderAccessoriesAdmin(data.accessories || defaultData.accessories);
+                renderMaintenanceAdmin(data.maintenanceWorks || defaultData.maintenanceWorks);
+
                 document.getElementById("input-top-ad-enable").value = data.topAdEnable || "true";
                 document.getElementById("input-top-ad-text").value = data.topAdText || "";
-                
                 document.getElementById("input-main-ad-enable").value = data.mainAdEnable || "true";
                 document.getElementById("input-ad-type").value = data.adType || "image";
                 document.getElementById("input-ad-media-url").value = data.adMediaUrl || "";
@@ -1024,112 +1281,26 @@
             }
         }
 
-        function closeAdminModal() {
-            document.getElementById("adminModal").style.display = "none";
+        function renderAccessoriesAdmin(items) {
+            const container = document.getElementById("accessoriesContainer");
+            container.innerHTML = "";
+            items.forEach((item, index) => {
+                container.innerHTML += `
+                    <div class="dynamic-item-box" id="acc-item-${index}">
+                        <div class="form-group"><label>اسم العنصر/القطعة:</label><input type="text" class="acc-name" value="${item.name || ''}"></div>
+                        <div class="form-group"><label>السعر:</label><input type="text" class="acc-price" value="${item.price || ''}"></div>
+                        <div class="form-group"><label>العدد المتوفر:</label><input type="text" class="acc-qty" value="${item.qty || ''}"></div>
+                        <div class="form-group"><label>مكان الخزن (الرف/الصندوق):</label><input type="text" class="acc-location" value="${item.location || ''}"></div>
+                        <div class="form-group"><label>التفاصيل الكاملة:</label><input type="text" class="acc-desc" value="${item.desc || ''}"></div>
+                        <div class="form-group"><label>رابط الصورة:</label><input type="text" class="acc-img" value="${item.img || ''}"></div>
+                        <button type="button" class="delete-item-btn" onclick="this.parentElement.remove()">حذف هذا المنتج</button>
+                    </div>
+                `;
+            });
         }
 
-        function saveSiteData() {
-            const newData = {
-                storeName: document.getElementById("input-store-name").value,
-                badge: document.getElementById("input-badge").value,
-                heroTitle: document.getElementById("input-hero-title").value,
-                heroDesc: document.getElementById("input-hero-desc").value,
-                address: document.getElementById("input-address").value,
-                phone: document.getElementById("input-phone").value,
-                waPhone: document.getElementById("input-wa").value,
-                mapLink: document.getElementById("input-map-link").value,
-                topAdEnable: document.getElementById("input-top-ad-enable").value,
-                topAdText: document.getElementById("input-top-ad-text").value,
-                mainAdEnable: document.getElementById("input-main-ad-enable").value,
-                adType: document.getElementById("input-ad-type").value,
-                adMediaUrl: document.getElementById("input-ad-media-url").value,
-                adTitle: document.getElementById("input-ad-title").value,
-                adDesc: document.getElementById("input-ad-desc").value,
-                botEnable: document.getElementById("input-bot-enable").value,
-                botName: document.getElementById("input-bot-name").value,
-                botWelcome: document.getElementById("input-bot-welcome").value,
-                botColor: document.getElementById("input-bot-color").value,
-                botBg: document.getElementById("input-bot-bg").value
-            };
-
-            try {
-                localStorage.setItem("siteData", JSON.stringify(newData));
-            } catch (e) {
-                console.error("Could not save to localStorage", e);
-            }
-            
-            loadSiteData();
-            closeAdminModal();
-            alert("تم حفظ التعديلات بنجاح!");
-        }
-
-        /* CHATBOT FUNCTIONS */
-        function toggleChatbot() {
-            const box = document.getElementById("botBox");
-            box.style.display = (box.style.display === "flex") ? "none" : "flex";
-        }
-
-        function handleBotKey(e) {
-            if (e.key === 'Enter') sendBotMessage();
-        }
-
-        function sendBotMessage() {
-            const input = document.getElementById("botInput");
-            const txt = input.value.trim();
-            if (!txt) return;
-
-            const msgs = document.getElementById("botMessages");
-
-            const uMsg = document.createElement("div");
-            uMsg.className = "chat-msg user";
-            uMsg.innerText = txt;
-            msgs.appendChild(uMsg);
-
-            input.value = "";
-            msgs.scrollTop = msgs.scrollHeight;
-
-            setTimeout(() => {
-                const bMsg = document.createElement("div");
-                bMsg.className = "chat-msg bot";
-                bMsg.innerText = getBotResponse(txt);
-                msgs.appendChild(bMsg);
-                msgs.scrollTop = msgs.scrollHeight;
-            }, 500);
-        }
-
-        function getBotResponse(query) {
-            const q = query.toLowerCase();
-            let data;
-            try {
-                data = JSON.parse(localStorage.getItem("siteData")) || defaultData;
-            } catch (e) {
-                data = defaultData;
-            }
-
-            if (q.includes("عنوان") || q.includes("موقع") || q.includes("مكان") || q.includes("أين")) {
-                return "عنواننا هو: " + (data.address || defaultData.address) + ". ويمكنك فتح موقعنا على خرائط جوجل من أسفل الموقع!";
-            } else if (q.includes("رقم") || q.includes("اتصال") || q.includes("تواصل") || q.includes("واتس")) {
-                return "يمكنك الاتصال بنا على الرقم: " + (data.phone || defaultData.phone) + " أو مراسلتنا فوراً عبر زر الواتساب العائم!";
-            } else if (q.includes("شاشة") || q.includes("شاشه") || q.includes("بطارية") || q.includes("بطاريه") || q.includes("صيانة") || q.includes("تصليح")) {
-                return "نقدم خدمات صيانة متكاملة لتبديل الشاشات والبطاريات الأصلية، وصيانة الآيسي والمذربورد لجميع هواتف الآيفون والسامسونج وغيرها بضمان ورعاية كاملة.";
-            } else if (q.includes("إكسسوار") || q.includes("اكسسوار") || q.includes("شاحن") || q.includes("سماعة") || q.includes("كفر")) {
-                return "يتوفر لدينا أحدث الشواحن السريعة الأصلية، الكوابل المعتمدة، سماعات البلوتوث، الساعات الذكية، وحمايات الشاشة والكفرات الفاخرة المقاومة للصدمات.";
-            } else if (q.includes("سعر") || q.includes("تكلفة") || q.includes("بيش")) {
-                return "تختلف الأسعار حسب نوع الهاتف والخدمة المطلوبة. يُرجى الاتصال بنا على الرقم " + (data.phone || defaultData.phone) + " لإعطائك السعر المباشر والأنسب!";
-            } else if (q.includes("مرحبا") || q.includes("أهلا") || q.includes("السلام")) {
-                return "أهلاً وسهلاً بك في مكتب عماد ديگان! يسعدنا إجابتك عن أي استفسار تخص صيانة هاتف أو إكسسواراته.";
-            } else {
-                return "شكراً لتواصلك معنا! بخصوص هذا الاستفسار، يسعدنا تواصلك المباشر مع صاحب المكتب على الرقم " + (data.phone || defaultData.phone) + " أو عبر الواتساب لتزويدك بالتفاصيل الكاملة.";
-            }
-        }
-
-        window.onload = function() {
-            loadSiteData();
-            if (typeof AOS !== 'undefined') {
-                AOS.init({ once: true, duration: 800 });
-            }
-        };
-    </script>
-</body>
-</html>
-
+        function addAccessoryField() {
+            const container = document.getElementById("accessoriesContainer");
+            const index = container.children.length;
+            container.innerHTML += `
+                <div class="dynamic-item-box" id="acc-it
