@@ -1303,4 +1303,177 @@
             const container = document.getElementById("accessoriesContainer");
             const index = container.children.length;
             container.innerHTML += `
-                <div class="dynamic-item-box" id="acc-it
+                <div class="dynamic-item-box" id="acc-item-${index}">
+                    <div class="form-group"><label>اسم العنصر/القطعة:</label><input type="text" class="acc-name" value=""></div>
+                    <div class="form-group"><label>السعر:</label><input type="text" class="acc-price" value=""></div>
+                    <div class="form-group"><label>العدد المتوفر:</label><input type="text" class="acc-qty" value=""></div>
+                    <div class="form-group"><label>مكان الخزن (الرف/الصندوق):</label><input type="text" class="acc-location" value=""></div>
+                    <div class="form-group"><label>التفاصيل الكاملة:</label><input type="text" class="acc-desc" value=""></div>
+                    <div class="form-group"><label>رابط الصورة:</label><input type="text" class="acc-img" value=""></div>
+                    <button type="button" class="delete-item-btn" onclick="this.parentElement.remove()">حذف هذا المنتج</button>
+                </div>
+            `;
+        }
+
+        function renderMaintenanceAdmin(works) {
+            const container = document.getElementById("maintenanceContainer");
+            container.innerHTML = "";
+            works.forEach((work, index) => {
+                container.innerHTML += `
+                    <div class="dynamic-item-box" id="maint-item-${index}">
+                        <div class="form-group"><label>عنوان عمل الصيانة:</label><input type="text" class="maint-title" value="${work.title || ''}"></div>
+                        <div class="form-group"><label>تفاصيل التصليح:</label><input type="text" class="maint-desc" value="${work.desc || ''}"></div>
+                        <div class="form-group"><label>رابط صورة الشغل:</label><input type="text" class="maint-img" value="${work.img || ''}"></div>
+                        <button type="button" class="delete-item-btn" onclick="this.parentElement.remove()">حذف هذا العمل</button>
+                    </div>
+                `;
+            });
+        }
+
+        function addMaintenanceField() {
+            const container = document.getElementById("maintenanceContainer");
+            const index = container.children.length;
+            container.innerHTML += `
+                <div class="dynamic-item-box" id="maint-item-${index}">
+                    <div class="form-group"><label>عنوان عمل الصيانة:</label><input type="text" class="maint-title" value=""></div>
+                    <div class="form-group"><label>تفاصيل التصليح:</label><input type="text" class="maint-desc" value=""></div>
+                    <div class="form-group"><label>رابط صورة الشغل:</label><input type="text" class="maint-img" value=""></div>
+                    <button type="button" class="delete-item-btn" onclick="this.parentElement.remove()">حذف هذا العمل</button>
+                </div>
+            `;
+        }
+
+        function closeAdminModal() {
+            document.getElementById("adminModal").style.display = "none";
+        }
+
+        function saveSiteData() {
+            const accBoxes = document.querySelectorAll("#accessoriesContainer .dynamic-item-box");
+            const accessoriesArr = [];
+            accBoxes.forEach(box => {
+                accessoriesArr.push({
+                    name: box.querySelector(".acc-name").value,
+                    price: box.querySelector(".acc-price").value,
+                    qty: box.querySelector(".acc-qty").value,
+                    location: box.querySelector(".acc-location").value,
+                    desc: box.querySelector(".acc-desc").value,
+                    img: box.querySelector(".acc-img").value
+                });
+            });
+
+            const maintBoxes = document.querySelectorAll("#maintenanceContainer .dynamic-item-box");
+            const maintenanceArr = [];
+            maintBoxes.forEach(box => {
+                maintenanceArr.push({
+                    title: box.querySelector(".maint-title").value,
+                    desc: box.querySelector(".maint-desc").value,
+                    img: box.querySelector(".maint-img").value
+                });
+            });
+
+            const newData = {
+                storeName: document.getElementById("input-store-name").value,
+                badge: document.getElementById("input-badge").value,
+                heroTitle: document.getElementById("input-hero-title").value,
+                heroDesc: document.getElementById("input-hero-desc").value,
+                address: document.getElementById("input-address").value,
+                phone: document.getElementById("input-phone").value,
+                waPhone: document.getElementById("input-wa").value,
+                mapLink: document.getElementById("input-map-link").value,
+                topAdEnable: document.getElementById("input-top-ad-enable").value,
+                topAdText: document.getElementById("input-top-ad-text").value,
+                mainAdEnable: document.getElementById("input-main-ad-enable").value,
+                adType: document.getElementById("input-ad-type").value,
+                adMediaUrl: document.getElementById("input-ad-media-url").value,
+                adTitle: document.getElementById("input-ad-title").value,
+                adDesc: document.getElementById("input-ad-desc").value,
+                botEnable: document.getElementById("input-bot-enable").value,
+                botName: document.getElementById("input-bot-name").value,
+                botWelcome: document.getElementById("input-bot-welcome").value,
+                botColor: document.getElementById("input-bot-color").value,
+                botBg: document.getElementById("input-bot-bg").value,
+                accessories: accessoriesArr,
+                maintenanceWorks: maintenanceArr
+            };
+
+            try {
+                localStorage.setItem("siteData", JSON.stringify(newData));
+            } catch (e) {
+                console.error("Could not save to localStorage", e);
+            }
+            
+            loadSiteData();
+            closeAdminModal();
+            alert("تم حفظ التعديلات والمنتجات وأعمال الصيانة بنجاح!");
+        }
+
+        /* CHATBOT FUNCTIONS */
+        function toggleChatbot() {
+            const box = document.getElementById("botBox");
+            box.style.display = (box.style.display === "flex") ? "none" : "flex";
+        }
+
+        function handleBotKey(e) {
+            if (e.key === 'Enter') sendBotMessage();
+        }
+
+        function sendBotMessage() {
+            const input = document.getElementById("botInput");
+            const txt = input.value.trim();
+            if (!txt) return;
+
+            const msgs = document.getElementById("botMessages");
+
+            const uMsg = document.createElement("div");
+            uMsg.className = "chat-msg user";
+            uMsg.innerText = txt;
+            msgs.appendChild(uMsg);
+
+            input.value = "";
+            msgs.scrollTop = msgs.scrollHeight;
+
+            setTimeout(() => {
+                const bMsg = document.createElement("div");
+                bMsg.className = "chat-msg bot";
+                bMsg.innerText = getBotResponse(txt);
+                msgs.appendChild(bMsg);
+                msgs.scrollTop = msgs.scrollHeight;
+            }, 500);
+        }
+
+        function getBotResponse(query) {
+            const q = query.toLowerCase();
+            let data;
+            try {
+                data = JSON.parse(localStorage.getItem("siteData")) || defaultData;
+            } catch (e) {
+                data = defaultData;
+            }
+
+            if (q.includes("عنوان") || q.includes("موقع") || q.includes("مكان") || q.includes("أين")) {
+                return "عنواننا هو: " + (data.address || defaultData.address) + ". ويمكنك فتح موقعنا على خرائط جوجل من أسفل الموقع!";
+            } else if (q.includes("رقم") || q.includes("اتصال") || q.includes("تواصل") || q.includes("واتس")) {
+                return "يمكنك الاتصال بنا على الرقم: " + (data.phone || defaultData.phone) + " أو مراسلتنا فوراً عبر زر الواتساب العائم!";
+            } else if (q.includes("شاشة") || q.includes("شاشه") || q.includes("بطارية") || q.includes("بطاريه") || q.includes("صيانة") || q.includes("تصليح")) {
+                return "نقدم خدمات صيانة متكاملة لتبديل الشاشات والبطاريات الأصلية، وصيانة الآيسي والمذربورد لجميع هواتف الآيفون والسامسونج وغيرها بضمان ورعاية كاملة.";
+            } else if (q.includes("إكسسوار") || q.includes("اكسسوار") || q.includes("شاحن") || q.includes("سماعة") || q.includes("كفر")) {
+                return "يتوفر لدينا أحدث الشواحن السريعة الأصلية، الكوابل المعتمدة، سماعات البلوتوث، الساعات الذكية، وحمايات الشاشة والكفرات الفاخرة المقاومة للصدمات.";
+            } else if (q.includes("سعر") || q.includes("تكلفة") || q.includes("بيش")) {
+                return "تختلف الأسعار حسب نوع الهاتف والخدمة المطلوبة. يُرجى الاتصال بنا على الرقم " + (data.phone || defaultData.phone) + " لإعطائك السعر المباشر والأنسب!";
+            } else if (q.includes("مرحبا") || q.includes("أهلا") || q.includes("السلام")) {
+                return "أهلاً وسهلاً بك في مكتب عماد ديگان! يسعدنا إجابتك عن أي استفسار تخص صيانة هاتف أو إكسسواراته.";
+            } else {
+                return "شكراً لتواصلك معنا! بخصوص هذا الاستفسار، يسعدنا تواصلك المباشر مع صاحب المكتب على الرقم " + (data.phone || defaultData.phone) + " أو عبر الواتساب لتزويدك بالتفاصيل الكاملة.";
+            }
+        }
+
+        window.onload = function() {
+            loadSiteData();
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ once: true, duration: 800 });
+            }
+        };
+    </script>
+</body>
+</html>
+
