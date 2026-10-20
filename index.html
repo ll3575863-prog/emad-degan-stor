@@ -1,0 +1,1135 @@
+إليك كود الموقع الكامل والجاهز للنسخ المباشر في ملف index.html، يحتوي على كافة الميزات (التصميم النيون، لوحة التحكم، المساعد الآلي، والمساحات الإعلانية):
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="site-title-tag">مكتب عماد ديگان | صيانة وإكسسوارات الهواتف الذكية</title>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #00d2ff;
+            --primary-glow: rgba(0, 210, 255, 0.6);
+            --secondary: #3a7bd5;
+            --accent: #ff007f;
+            --accent-glow: rgba(255, 0, 127, 0.6);
+            --bg-dark: #070b19;
+            --card-bg: rgba(15, 23, 42, 0.85);
+            --text-main: #f1f5f9;
+            --text-sub: #94a3b8;
+            --bot-color: #00d2ff;
+            --bot-bg: #0f172a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(0, 210, 255, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 85% 85%, rgba(255, 0, 127, 0.08) 0%, transparent 25%);
+        }
+
+        /* Top Announcement Bar */
+        .top-ad-bar {
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+            color: #ffffff;
+            text-align: center;
+            padding: 8px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            display: none;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .top-ad-bar a {
+            color: #ffffff;
+            text-decoration: underline;
+            margin-right: 10px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(7, 11, 25, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(90deg, var(--primary), var(--accent), var(--primary)) 1;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--primary), #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary);
+            -webkit-text-fill-color: initial;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px var(--primary)); }
+            50% { transform: scale(1.15); filter: drop-shadow(0 0 15px var(--primary)); }
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 8px var(--primary-glow);
+        }
+
+        .admin-btn {
+            background: rgba(255, 0, 127, 0.2);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .admin-btn:hover {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px 50px 20px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .badge {
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-sub);
+            margin-bottom: 35px;
+            line-height: 1.8;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: #fff;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+        }
+
+        /* ADVERTISING SECTION */
+        .ad-section {
+            padding: 40px 8%;
+            display: none;
+        }
+
+        .ad-banner-container {
+            background: var(--card-bg);
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+            border-radius: 20px;
+            overflow: hidden;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            text-align: center;
+        }
+
+        .ad-banner-container img, .ad-banner-container video {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .ad-banner-caption {
+            padding: 20px;
+            background: rgba(15, 23, 42, 0.95);
+        }
+
+        .ad-banner-caption h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 22px;
+        }
+
+        .ad-banner-caption p {
+            color: var(--text-sub);
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        /* Sections & Cards */
+        .section {
+            padding: 70px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 40px;
+        }
+
+        .section-title span {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 25px var(--primary-glow);
+            transform: translateY(-5px);
+        }
+
+        .icon-box {
+            width: 65px;
+            height: 65px;
+            background: rgba(0, 210, 255, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            font-size: 28px;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-sub);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Contact Box */
+        .info-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 35px;
+            max-width: 850px;
+            margin: 0 auto;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 25px var(--primary-glow);
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 0, 127, 0.15);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .info-text h4 {
+            font-size: 15px;
+            color: var(--text-sub);
+        }
+
+        .info-text p, .info-text a {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        /* Modal Admin Panel */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #0f172a;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 30px var(--primary-glow);
+            border-radius: 16px;
+            padding: 25px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-align: center;
+            font-size: 22px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--text-sub);
+            font-size: 14px;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: #1e293b;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .save-btn {
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Floating WhatsApp Button */
+        .floating-wa {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: #25D366;
+            color: white;
+            width: 55px; height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        /* CHATBOT STYLES */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: var(--bot-color);
+            color: #000;
+            width: 55px; height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            box-shadow: 0 0 20px var(--primary-glow);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-box {
+            display: none;
+            position: fixed;
+            bottom: 90px;
+            right: 25px;
+            width: 340px;
+            height: 450px;
+            background: var(--bot-bg);
+            border: 2px solid var(--bot-color);
+            border-radius: 16px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.7);
+            z-index: 1000;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chatbot-header {
+            background: var(--bot-color);
+            color: #000;
+            padding: 12px 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-msg {
+            max-width: 80%;
+            padding: 8px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .chat-msg.bot {
+            background: #1e293b;
+            color: #fff;
+            align-self: flex-start;
+            border-bottom-right-radius: 2px;
+        }
+
+        .chat-msg.user {
+            background: var(--bot-color);
+            color: #000;
+            font-weight: 600;
+            align-self: flex-end;
+            border-bottom-left-radius: 2px;
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            background: rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #334155;
+            background: #1e293b;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .chatbot-input button {
+            background: var(--bot-color);
+            color: #000;
+            border: none;
+            padding: 8px 12px;
+            margin-right: 5px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #040711;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-sub);
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+                padding: 12px;
+            }
+
+            nav ul {
+                gap: 12px;
+                font-size: 13px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .info-row {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .chatbot-box {
+                width: 90%;
+                right: 5%;
+                bottom: 85px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Announcement Bar Ad -->
+    <div class="top-ad-bar" id="topAdBar">
+        <span id="display-top-ad-text">🔥 عرض خاص: خصم 15% على صيانة الشاشات الأصلية لهذا الأسبوع!</span>
+        <a href="#contact" id="display-top-ad-link">اطلب الآن</a>
+    </div>
+
+    <!-- Header / Nav -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+            <span id="display-store-name">مكتب عماد ديگان</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">الرئيسية</a></li>
+                <li><a href="#services">الخدمات</a></li>
+                <li><a href="#accessories">الإكسسوارات</a></li>
+                <li><a href="#contact">التواصل</a></li>
+                <li><button class="admin-btn" onclick="openAdminModal()"><i class="fa-solid fa-gear"></i> إدارة الموقع</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-content" data-aos="fade-up">
+            <span class="badge" id="display-badge">المركز الأول للصيانة والإكسسوارات</span>
+            <h1>الاحترافية والدقة في <span id="display-hero-title">صيانة واكسسوارات الهواتف</span></h1>
+            <p id="display-hero-desc">نقدم أفضل حلول الصيانة السريعة للشاشات والبطاريات واللوحات الإلكترونية، بالإضافة إلى تشكيلة من أحدث الإكسسوارات العالمية والأصلية في بابل.</p>
+            <div class="hero-btns">
+                <a href="tel:07818213344" id="btn-call" class="btn btn-primary"><i class="fa-solid fa-phone"></i> اتصل بنا الآن</a>
+                <a href="https://wa.me/9647818213344" id="btn-wa" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> مراسلة الواتساب</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMOTIONAL AD SECTION -->
+    <section class="ad-section" id="mainAdSection">
+        <div class="ad-banner-container" data-aos="zoom-in">
+            <div id="ad-media-box">
+                <!-- Image or Video will render here dynamically -->
+            </div>
+            <div class="ad-banner-caption">
+                <h3 id="display-ad-title">إعلان/عروض عماد ديگان المميزة</h3>
+                <p id="display-ad-desc">شاهد أحدث العروض الحصرية والوصول الجديد للإكسسوارات وأجهزة الصيانة الحديثة.</p>
+                <a href="#contact" id="display-ad-btn" class="btn btn-primary"><i class="fa-solid fa-star"></i> الاستفادة من العرض</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <h2 class="section-title" data-aos="fade-up">خدمات <span>الصيانة الاحترافية</span></h2>
+        <div class="grid">
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="icon-box"><i class="fa-solid fa-wrench"></i></div>
+                <h3>تبديل الشاشات والبطاريات</h3>
+                <p>تبديل الشاشات والبطاريات الأصلية مع الضمان لكافة هواتف آيفون وسامسونج وجميع الماركات.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box"><i class="fa-solid fa-microchip"></i></div>
+                <h3>صيانة المذربورد والآيسي</h3>
+                <p>إصلاح دقيق لأعطال الشحن، الصوت، الشبكة، والأعطال المستعصية على أيدي متخصصين.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box"><i class="fa-solid fa-laptop-code"></i></div>
+                <h3>السوفتوير والبرمجة</h3>
+                <p>فك الحسابات، تحديث الأنظمة، معالجة بطء الجهاز واسترجاع البيانات بأمان تام.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accessories Section -->
+    <section class="section" id="accessories">
+        <h2 class="section-title" data-aos="fade-up">قسم <span>الإكسسوارات الحديثة</span></h2>
+        <div class="grid">
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="icon-box"><i class="fa-solid fa-bolt"></i></div>
+                <h3>الشواحن والكوابل الأصلية</h3>
+                <p>شواحن سريعة وبور بانك وكوابل معتمدة لحماية بطارية هاتفك وضمان أقصى سرعة شحن.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box"><i class="fa-solid fa-headphones"></i></div>
+                <h3>السماعات والساعات الذكية</h3>
+                <p>أحدث سماعات البلوتوث والساعات الذكية المتوافقة مع كافة الأجهزة بتصميم عصري.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>الحماية والكفرات</h3>
+                <p>كفرات فاخرة وحمايات شاشة ضد الصدمات والخدوش لجميع الموديلات الحديثة.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <h2 class="section-title" data-aos="fade-up">تفاصيل <span>الموقع والتواصل</span></h2>
+        <div class="info-container" data-aos="zoom-in">
+            <div class="info-row">
+                <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="info-text">
+                    <h4>عنوان المتجر:</h4>
+                    <p id="display-address">بابل - القاسم - الشارع العام (مجاور مصرف الرافدين)</p>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                <div class="info-text">
+                    <h4>رقم الهاتف المباشر:</h4>
+                    <p><a href="tel:07818213344" id="display-phone">07818213344</a></p>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                <div class="info-text">
+                    <h4>موقعنا على الخريطة:</h4>
+                    <p><a href="https://share.google/ucKdVACGSDOIRH4Ze" id="display-map-link" target="_blank">اضغط هنا لفتح الموقع في خرائط Google <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:14px;"></i></a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/9647818213344" id="floating-wa-btn" target="_blank" class="floating-wa">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- CHATBOT BOT WIDGET -->
+    <div class="chatbot-toggle" id="botToggle" onclick="toggleChatbot()">
+        <i class="fa-solid fa-robot"></i>
+    </div>
+
+    <div class="chatbot-box" id="botBox">
+        <div class="chatbot-header">
+            <span id="bot-name-display"><i class="fa-solid fa-robot"></i> مساعد عماد ديگان</span>
+            <i class="fa-solid fa-xmark" style="cursor:pointer;" onclick="toggleChatbot()"></i>
+        </div>
+        <div class="chatbot-messages" id="botMessages">
+            <div class="chat-msg bot" id="bot-welcome-display">مرحباً بك! أنا المساعد الآلي لمكتب عماد ديگان. كيف يمكنني مساعدتك في الصيانة أو الإكسسوارات اليوم؟</div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="botInput" placeholder="أكتب سؤالك هنا..." onkeypress="handleBotKey(event)">
+            <button onclick="sendBotMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div class="modal" id="adminModal">
+        <div class="modal-content">
+            <h2>لوحة إدارة وتعديل الموقع</h2>
+            <form id="adminForm">
+                <div class="form-group">
+                    <label>اسم المتجر:</label>
+                    <input type="text" id="input-store-name">
+                </div>
+                <div class="form-group">
+                    <label>الشعار العلوي (Badge):</label>
+                    <input type="text" id="input-badge">
+                </div>
+                <div class="form-group">
+                    <label>عنوان الواجهة الرئيسية:</label>
+                    <input type="text" id="input-hero-title">
+                </div>
+                <div class="form-group">
+                    <label>الوصف الرئيسي:</label>
+                    <textarea id="input-hero-desc" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>عنوان المتجر (الموقع الجغرافي):</label>
+                    <input type="text" id="input-address">
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف (مثل: 07818213344):</label>
+                    <input type="text" id="input-phone">
+                </div>
+                <div class="form-group">
+                    <label>رقم الواتساب (بالصيغة الدولية مثل: 9647818213344):</label>
+                    <input type="text" id="input-wa">
+                </div>
+                <div class="form-group">
+                    <label>رابط الخريطة:</label>
+                    <input type="text" id="input-map-link">
+                </div>
+
+                <hr style="margin:20px 0; border-color:#334155;">
+                <h3 style="color:var(--accent); margin-bottom:15px; font-size:18px;">إدارة المساحات الإعلانية (Ads)</h3>
+
+                <div class="form-group">
+                    <label>تفعيل الشريط الإعلاني العلوي:</label>
+                    <select id="input-top-ad-enable">
+                        <option value="true">إظهار الشريط</option>
+                        <option value="false">إخفاء الشريط</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>نص الشريط العلوي:</label>
+                    <input type="text" id="input-top-ad-text">
+                </div>
+
+                <div class="form-group">
+                    <label>تفعيل قسم الإعلان الرئيسي (صورة / فيديو):</label>
+                    <select id="input-main-ad-enable">
+                        <option value="true">إظهار الإعلان الرئيسي</option>
+                        <option value="false">إخفاء الإعلان الرئيسي</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>نوع الوسائط الإعلانية:</label>
+                    <select id="input-ad-type">
+                        <option value="image">صورة (Image)</option>
+                        <option value="video">فيديو (Video File or Link)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>رابط الصورة أو الفيديو الإعلاني:</label>
+                    <input type="text" id="input-ad-media-url" placeholder="ضع رابط الصورة أو الفيديو هنا">
+                </div>
+                <div class="form-group">
+                    <label>عنوان الإعلان الرئيسي:</label>
+                    <input type="text" id="input-ad-title">
+                </div>
+                <div class="form-group">
+                    <label>وصف الإعلان:</label>
+                    <input type="text" id="input-ad-desc">
+                </div>
+
+                <hr style="margin:20px 0; border-color:#334155;">
+                <h3 style="color:var(--primary); margin-bottom:15px; font-size:18px;">تخصيص المساعد الآلي (Chatbot)</h3>
+
+                <div class="form-group">
+                    <label>حالة المساعد الآلي:</label>
+                    <select id="input-bot-enable">
+                        <option value="true">تفعيل المساعد</option>
+                        <option value="false">إخفاء / تعطيل المساعد</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>اسم المساعد الآلي:</label>
+                    <input type="text" id="input-bot-name">
+                </div>
+                <div class="form-group">
+                    <label>الرسالة الترحيبية للمساعد:</label>
+                    <input type="text" id="input-bot-welcome">
+                </div>
+                <div class="form-group">
+                    <label>لون المساعد (الرئيسي):</label>
+                    <input type="color" id="input-bot-color" style="height:40px; cursor:pointer;">
+                </div>
+                <div class="form-group">
+                    <label>لون خلفية المساعد:</label>
+                    <input type="color" id="input-bot-bg" style="height:40px; cursor:pointer;">
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="close-btn" onclick="closeAdminModal()">إلغاء</button>
+                    <button type="button" class="save-btn" onclick="saveSiteData()">حفظ التعديلات</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 <span id="display-footer-name">مكتب عماد ديگان</span></p>
+    </footer>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        const defaultData = {
+            storeName: "مكتب عماد ديگان",
+            badge: "المركز الأول للصيانة والإكسسوارات",
+            heroTitle: "صيانة واكسسوارات الهواتف",
+            heroDesc: "نقدم أفضل حلول الصيانة السريعة للشاشات والبطاريات واللوحات الإلكترونية، بالإضافة إلى تشكيلة من أحدث الإكسسوارات العالمية والأصلية في بابل.",
+            address: "بابل - القاسم - الشارع العام (مجاور مصرف الرافدين)",
+            phone: "07818213344",
+            waPhone: "9647818213344",
+            mapLink: "https://share.google/ucKdVACGSDOIRH4Ze",
+            topAdEnable: "true",
+            topAdText: "🔥 عرض خاص: خصم 15% على صيانة الشاشات الأصلية لهذا الأسبوع!",
+            mainAdEnable: "true",
+            adType: "image",
+            adMediaUrl: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1000&auto=format&fit=crop&q=80",
+            adTitle: "عروض وسحوبات شهرية في المكتب",
+            adDesc: "اشترِ إكسسوارات بقيمة 25 ألف دينار وادخل السحب على هاتف حديث مجاناً!",
+            botEnable: "true",
+            botName: "مساعد عماد ديگان",
+            botWelcome: "مرحباً بك! أنا المساعد الآلي لمكتب عماد ديگان. كيف يمكنني مساعدتك في الصيانة أو الإكسسوارات اليوم؟",
+            botColor: "#00d2ff",
+            botBg: "#0f172a"
+        };
+
+        function loadSiteData() {
+            let data;
+            try {
+                data = JSON.parse(localStorage.getItem("siteData")) || defaultData;
+            } catch (e) {
+                data = defaultData;
+            }
+
+            document.getElementById("display-store-name").innerText = data.storeName || defaultData.storeName;
+            document.getElementById("display-footer-name").innerText = data.storeName || defaultData.storeName;
+            document.getElementById("site-title-tag").innerText = (data.storeName || defaultData.storeName) + " | صيانة وإكسسوارات الهواتف الذكية";
+            document.getElementById("display-badge").innerText = data.badge || defaultData.badge;
+            document.getElementById("display-hero-title").innerText = data.heroTitle || defaultData.heroTitle;
+            document.getElementById("display-hero-desc").innerText = data.heroDesc || defaultData.heroDesc;
+            document.getElementById("display-address").innerText = data.address || defaultData.address;
+            document.getElementById("display-phone").innerText = data.phone || defaultData.phone;
+            
+            const phone = data.phone || defaultData.phone;
+            const waPhone = data.waPhone || defaultData.waPhone;
+            
+            document.getElementById("display-phone").href = "tel:" + phone;
+            document.getElementById("btn-call").href = "tel:" + phone;
+            document.getElementById("btn-wa").href = "https://wa.me/" + waPhone;
+            document.getElementById("floating-wa-btn").href = "https://wa.me/" + waPhone;
+            document.getElementById("display-map-link").href = data.mapLink || defaultData.mapLink;
+
+            // TOP AD BAR
+            const topAdEnable = data.topAdEnable !== undefined ? data.topAdEnable : defaultData.topAdEnable;
+            document.getElementById("topAdBar").style.display = topAdEnable === "true" ? "block" : "none";
+            document.getElementById("display-top-ad-text").innerText = data.topAdText || defaultData.topAdText;
+
+            // MAIN PROMOTIONAL AD
+            const mainAdEnable = data.mainAdEnable !== undefined ? data.mainAdEnable : defaultData.mainAdEnable;
+            const adSection = document.getElementById("mainAdSection");
+            adSection.style.display = mainAdEnable === "true" ? "block" : "none";
+
+            if (mainAdEnable === "true") {
+                document.getElementById("display-ad-title").innerText = data.adTitle || defaultData.adTitle;
+                document.getElementById("display-ad-desc").innerText = data.adDesc || defaultData.adDesc;
+                
+                const mediaBox = document.getElementById("ad-media-box");
+                const type = data.adType || defaultData.adType;
+                const url = data.adMediaUrl || defaultData.adMediaUrl;
+
+                if (type === "video") {
+                    mediaBox.innerHTML = `<video src="${url}" controls autoplay muted loop></video>`;
+                } else {
+                    mediaBox.innerHTML = `<img src="${url}" alt="Ad Banner">`;
+                }
+            }
+
+            // Chatbot customization load
+            const botEnable = data.botEnable !== undefined ? data.botEnable : defaultData.botEnable;
+            document.getElementById("botToggle").style.display = botEnable === "true" ? "flex" : "none";
+            document.getElementById("bot-name-display").innerHTML = '<i class="fa-solid fa-robot"></i> ' + (data.botName || defaultData.botName);
+            document.getElementById("bot-welcome-display").innerText = data.botWelcome || defaultData.botWelcome;
+
+            document.documentElement.style.setProperty('--bot-color', data.botColor || defaultData.botColor);
+            document.documentElement.style.setProperty('--bot-bg', data.botBg || defaultData.botBg);
+        }
+
+        function openAdminModal() {
+            const password = prompt("أدخل كلمة المرور لدخول لوحة التحكم:");
+            if (password === "ailseedailseed") {
+                let data;
+                try {
+                    data = JSON.parse(localStorage.getItem("siteData")) || defaultData;
+                } catch (e) {
+                    data = defaultData;
+                }
+                
+                document.getElementById("input-store-name").value = data.storeName || "";
+                document.getElementById("input-badge").value = data.badge || "";
+                document.getElementById("input-hero-title").value = data.heroTitle || "";
+                document.getElementById("input-hero-desc").value = data.heroDesc || "";
+                document.getElementById("input-address").value = data.address || "";
+                document.getElementById("input-phone").value = data.phone || "";
+                document.getElementById("input-wa").value = data.waPhone || "";
+                document.getElementById("input-map-link").value = data.mapLink || "";
+
+                document.getElementById("input-top-ad-enable").value = data.topAdEnable || "true";
+                document.getElementById("input-top-ad-text").value = data.topAdText || "";
+                
+                document.getElementById("input-main-ad-enable").value = data.mainAdEnable || "true";
+                document.getElementById("input-ad-type").value = data.adType || "image";
+                document.getElementById("input-ad-media-url").value = data.adMediaUrl || "";
+                document.getElementById("input-ad-title").value = data.adTitle || "";
+                document.getElementById("input-ad-desc").value = data.adDesc || "";
+
+                document.getElementById("input-bot-enable").value = data.botEnable || "true";
+                document.getElementById("input-bot-name").value = data.botName || "";
+                document.getElementById("input-bot-welcome").value = data.botWelcome || "";
+                document.getElementById("input-bot-color").value = data.botColor || "#00d2ff";
+                document.getElementById("input-bot-bg").value = data.botBg || "#0f172a";
+
+                document.getElementById("adminModal").style.display = "flex";
+            } else if (password !== null) {
+                alert("كلمة المرور غير صحيحة!");
+            }
+        }
+
+        function closeAdminModal() {
+            document.getElementById("adminModal").style.display = "none";
+        }
+
+        function saveSiteData() {
+            const newData = {
+                storeName: document.getElementById("input-store-name").value,
+                badge: document.getElementById("input-badge").value,
+                heroTitle: document.getElementById("input-hero-title").value,
+                heroDesc: document.getElementById("input-hero-desc").value,
+                address: document.getElementById("input-address").value,
+                phone: document.getElementById("input-phone").value,
+                waPhone: document.getElementById("input-wa").value,
+                mapLink: document.getElementById("input-map-link").value,
+                topAdEnable: document.getElementById("input-top-ad-enable").value,
+                topAdText: document.getElementById("input-top-ad-text").value,
+                mainAdEnable: document.getElementById("input-main-ad-enable").value,
+                adType: document.getElementById("input-ad-type").value,
+                adMediaUrl: document.getElementById("input-ad-media-url").value,
+                adTitle: document.getElementById("input-ad-title").value,
+                adDesc: document.getElementById("input-ad-desc").value,
+                botEnable: document.getElementById("input-bot-enable").value,
+                botName: document.getElementById("input-bot-name").value,
+                botWelcome: document.getElementById("input-bot-welcome").value,
+                botColor: document.getElementById("input-bot-color").value,
+                botBg: document.getElementById("input-bot-bg").value
+            };
+
+            try {
+                localStorage.setItem("siteData", JSON.stringify(newData));
+            } catch (e) {
+                console.error("Could not save to localStorage", e);
+            }
+            
+            loadSiteData();
+            closeAdminModal();
+            alert("تم حفظ التعديلات بنجاح!");
+        }
+
+        /* CHATBOT FUNCTIONS */
+        function toggleChatbot() {
+            const box = document.getElementById("botBox");
+            box.style.display = (box.style.display === "flex") ? "none" : "flex";
+        }
+
+        function handleBotKey(e) {
+            if (e.key === 'Enter') sendBotMessage();
+        }
+
+        function sendBotMessage() {
+            const input = document.getElementById("botInput");
+            const txt = input.value.trim();
+            if (!txt) return;
+
+            const msgs = document.getElementById("botMessages");
+
+            const uMsg = document.createElement("div");
+            uMsg.className = "chat-msg user";
+            uMsg.innerText = txt;
+            msgs.appendChild(uMsg);
+
+            input.value = "";
+            msgs.scrollTop = msgs.scrollHeight;
+
+            setTimeout(() => {
+                const bMsg = document.createElement("div");
+                bMsg.className = "chat-msg bot";
+                bMsg.innerText = getBotResponse(txt);
+                msgs.appendChild(bMsg);
+                msgs.scrollTop = msgs.scrollHeight;
+            }, 500);
+        }
+
+        function getBotResponse(query) {
+            const q = query.toLowerCase();
+            let data;
+            try {
+                data = JSON.parse(localStorage.getItem("siteData")) || defaultData;
+            } catch (e) {
+                data = defaultData;
+            }
+
+            if (q.includes("عنوان") || q.includes("موقع") || q.includes("مكان") || q.includes("أين")) {
+                return "عنواننا هو: " + (data.address || defaultData.address) + ". ويمكنك فتح موقعنا على خرائط جوجل من أسفل الموقع!";
+            } else if (q.includes("رقم") || q.includes("اتصال") || q.includes("تواصل") || q.includes("واتس")) {
+                return "يمكنك الاتصال بنا على الرقم: " + (data.phone || defaultData.phone) + " أو مراسلتنا فوراً عبر زر الواتساب العائم!";
+            } else if (q.includes("شاشة") || q.includes("شاشه") || q.includes("بطارية") || q.includes("بطاريه") || q.includes("صيانة") || q.includes("تصليح")) {
+                return "نقدم خدمات صيانة متكاملة لتبديل الشاشات والبطاريات الأصلية، وصيانة الآيسي والمذربورد لجميع هواتف الآيفون والسامسونج وغيرها بضمان ورعاية كاملة.";
+            } else if (q.includes("إكسسوار") || q.includes("اكسسوار") || q.includes("شاحن") || q.includes("سماعة") || q.includes("كفر")) {
+                return "يتوفر لدينا أحدث الشواحن السريعة الأصلية، الكوابل المعتمدة، سماعات البلوتوث، الساعات الذكية، وحمايات الشاشة والكفرات الفاخرة المقاومة للصدمات.";
+            } else if (q.includes("سعر") || q.includes("تكلفة") || q.includes("بيش")) {
+                return "تختلف الأسعار حسب نوع الهاتف والخدمة المطلوبة. يُرجى الاتصال بنا على الرقم " + (data.phone || defaultData.phone) + " لإعطائك السعر المباشر والأنسب!";
+            } else if (q.includes("مرحبا") || q.includes("أهلا") || q.includes("السلام")) {
+                return "أهلاً وسهلاً بك في مكتب عماد ديگان! يسعدنا إجابتك عن أي استفسار تخص صيانة هاتف أو إكسسواراته.";
+            } else {
+                return "شكراً لتواصلك معنا! بخصوص هذا الاستفسار، يسعدنا تواصلك المباشر مع صاحب المكتب على الرقم " + (data.phone || defaultData.phone) + " أو عبر الواتساب لتزويدك بالتفاصيل الكاملة.";
+            }
+        }
+
+        window.onload = function() {
+            loadSiteData();
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ once: true, duration: 800 });
+            }
+        };
+    </script>
+</body>
+</html>
+
